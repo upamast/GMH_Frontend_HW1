@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<title>Frontend SP20 HW1</title>
+<body>
+
+<h1>Shopping Cart Calculator</h1>
+
+<table border="1">
+<tr>
+  <th width="200">Item</th>
+  <th width="200">Quantity</th>
+  <th width="200">Unit Price ($)</th>
+  <th width="200">Total Price ($)</th>
+</tr>
+
+<tr>
+  <td> <input type="text" id="item1"> </td>
+  <td> <input type="number" id="quantity1" onChange="item1()" onchange="total()"> </td>
+  <td> <input type="number" id="price1" onChange="item1()" onchange="total()"> </td>
+  <td> <output id="totalprice1"></output> </td>
+</tr>
+
+<tr>
+  <td> <input type="text" id="item2"> </td>
+  <td> <input type="number" id="quantity2" onChange="item2()" onchange="total()"> </td>
+  <td> <input type="number" id="price2" onChange="item2()" onchange="total()"> </td>
+  <td> <output id="totalprice2"></output> </td>
+</tr>
+
+<tr>
+  <th colspan=3>Total</th>
+  <td> <output id="totalprice"></output> </td>
+</tr>
+
+</table>
+
+<br><input type="button" value="Reset" onclick="resetvalues()"/>
+
+<script>
+
+// initialize total prices = 0
+
+var p1, q1, tp1 = 0, p2, q2, tp2 = 0, tp = 0
+
+// fetch, calculate, update fetched = calculated
+
+function item1() {
+  var p1 = document.getElementById("price1").value;
+  var q1 = document.getElementById("quantity1").value;
+  var item1price = document.getElementById("totalprice1");
+  tp1 = p1 * q1;
+  item1price.value = tp1;
+  total();
+}
+
+function item2() {
+  var p2 = document.getElementById("price2").value;
+  var q2 = document.getElementById("quantity2").value;
+  var item2price = document.getElementById("totalprice2");
+  tp2 = p2 * q2;
+  item2price.value = tp2;
+  total();
+}
+
+function total() {
+  var tp = document.getElementById("totalprice");
+  var totalprice = tp1 + tp2;
+  tp.value = totalprice;
+}
+
+// reset all values
+
+function resetvalues() {
+  document.getElementById("price1").value = null;
+  document.getElementById("price2").value = null;
+  document.getElementById("quantity1").value = null;
+  document.getElementById("quantity2").value = null;
+  document.getElementById("totalprice1").value = "";
+  document.getElementById("totalprice2").value = "";
+  document.getElementById("totalprice").value = "";
+  document.getElementById("item1").value = null;
+  document.getElementById("item2").value = null;
+}
+
+</script>
+
+</body>
+</html>
